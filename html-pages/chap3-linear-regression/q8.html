@@ -206,7 +206,7 @@ Auto<span class="o">=</span>na.omit<span class="p">(</span>Auto<span class="p">)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>lm.fit <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span>horsepower<span class="p">,</span> data<span class="o">=</span>Auto<span class="p">)</span>
@@ -222,30 +222,19 @@ Auto<span class="o">=</span>na.omit<span class="p">(</span>Auto<span class="p">)
 
 
 <div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
+<div class="output_subarea output_text output_error">
 <pre>
-Call:
-lm(formula = mpg ~ horsepower, data = Auto)
+Error in is.data.frame(data): object &apos;Auto&apos; not found
+Traceback:
 
-Residuals:
-     Min       1Q   Median       3Q      Max 
--13.5710  -3.2592  -0.3435   2.7630  16.9240 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 39.935861   0.717499   55.66   &lt;2e-16 ***
-horsepower  -0.157845   0.006446  -24.49   &lt;2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-Residual standard error: 4.906 on 390 degrees of freedom
-Multiple R-squared:  0.6059,	Adjusted R-squared:  0.6049 
-F-statistic: 599.7 on 1 and 390 DF,  p-value: &lt; 2.2e-16
-</pre>
+1. lm(mpg ~ horsepower, data = Auto)
+2. eval(mf, parent.frame())
+3. eval(expr, envir, enclos)
+4. stats::model.frame(formula = mpg ~ horsepower, data = Auto, drop.unused.levels = TRUE)
+5. model.frame.default(formula = mpg ~ horsepower, data = Auto, 
+ .     drop.unused.levels = TRUE)
+6. is.data.frame(data)</pre>
 </div>
-
 </div>
 
 </div>
@@ -4074,11 +4063,7 @@ AABkBCR2AAAAAAAyAhI7AAAAAAAZ8X/YHYpR3ELitAAAAABJRU5ErkJggg=="
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ol>
-<li>Residuals vs Fitted values graph forms a pattern which indicates nonlinearity between the response and predictor.</li>
-<li>Studentized residuals vs Fitted values graph shows that there are outliers in Y.</li>
-<li>Studentized residuals vs Leverage graph shows that some of the data points have high leverage.</li>
-</ol>
+<p>Residuals vs Fitted values graph forms a pattern which indicates nonlinearity between the response and predictor.</p>
 
 </div>
 </div>
