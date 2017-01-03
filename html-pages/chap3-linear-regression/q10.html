@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Q10</title>
+<title>q10</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -196,7 +196,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>Carseats <span class="o">=</span> na.omit<span class="p">(</span>Carseats<span class="p">)</span>
@@ -255,7 +255,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>lm.fit <span class="o">=</span> lm<span class="p">(</span>Sales<span class="o">~</span>Price<span class="o">+</span>Urban<span class="o">+</span>US<span class="p">,</span>data<span class="o">=</span>Carseats<span class="p">)</span>
@@ -376,7 +376,7 @@ However the p-value of that of USYes variable is a lot smaller than the 5% criti
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>lm.fit_small <span class="o">=</span> lm<span class="p">(</span>Sales<span class="o">~</span>Price<span class="o">+</span>US<span class="p">,</span>data<span class="o">=</span>Carseats<span class="p">)</span>
@@ -432,12 +432,47 @@ F-statistic: 62.43 on 2 and 397 DF,  p-value: &lt; 2.2e-16
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span>anova<span class="p">(</span>lm.fit<span class="p">,</span>lm.fit_small<span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr><th scope=col>Res.Df</th><th scope=col>RSS</th><th scope=col>Df</th><th scope=col>Sum of Sq</th><th scope=col>F</th><th scope=col>Pr(&gt;F)</th></tr></thead>
+<tbody>
+	<tr><td>396        </td><td>2420.835   </td><td>NA         </td><td>         NA</td><td>        NA </td><td>       NA  </td></tr>
+	<tr><td>397        </td><td>2420.874   </td><td>-1         </td><td>-0.03979039</td><td>0.00650891 </td><td>0.9357389  </td></tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The R-squared value in both models are similar. However because the model (e) has a slightly lower RSE, it fits the data only slightly better.</p>
+<p>According to the anova test the p-value of the f-statistic is larger than 5%. Therefore the null hypothesis stands true that both the models fit the data equally well.</p>
 
 </div>
 </div>
@@ -453,7 +488,7 @@ F-statistic: 62.43 on 2 and 397 DF,  p-value: &lt; 2.2e-16
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>confint<span class="p">(</span>lm.fit_small<span class="p">,</span> level<span class="o">=</span><span class="m">0.95</span><span class="p">)</span>
@@ -498,7 +533,7 @@ F-statistic: 62.43 on 2 and 397 DF,  p-value: &lt; 2.2e-16
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>plot<span class="p">(</span>predict<span class="p">(</span>lm.fit_small<span class="p">),</span>rstudent<span class="p">(</span>lm.fit_small<span class="p">))</span>
@@ -1396,7 +1431,7 @@ hgWwkDAYFsBCwmBY4P+k+Kr/xI6bNQAAAABJRU5ErkJggg=="
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
@@ -4614,7 +4649,7 @@ ILEDAAAAAJAQkNgBAAAAAEiI/wetEyq1CsFcfQAAAABJRU5ErkJggg=="
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>p<span class="o">=</span><span class="m">2</span>

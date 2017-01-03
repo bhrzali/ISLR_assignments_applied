@@ -183,7 +183,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>Auto<span class="o">=</span> read.csv<span class="p">(</span><span class="s">&quot;../../datasets/Auto.csv&quot;</span><span class="p">,</span>header<span class="o">=</span><span class="bp">T</span><span class="p">,</span>na.strings<span class="o">=</span><span class="s">&quot;?&quot;</span><span class="p">)</span>
@@ -222,19 +222,30 @@ Auto<span class="o">=</span>na.omit<span class="p">(</span>Auto<span class="p">)
 
 
 <div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-Error in is.data.frame(data): object &apos;Auto&apos; not found
-Traceback:
 
-1. lm(mpg ~ horsepower, data = Auto)
-2. eval(mf, parent.frame())
-3. eval(expr, envir, enclos)
-4. stats::model.frame(formula = mpg ~ horsepower, data = Auto, drop.unused.levels = TRUE)
-5. model.frame.default(formula = mpg ~ horsepower, data = Auto, 
- .     drop.unused.levels = TRUE)
-6. is.data.frame(data)</pre>
+
+<div class="output_text output_subarea ">
+<pre>
+Call:
+lm(formula = mpg ~ horsepower, data = Auto)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-13.5710  -3.2592  -0.3435   2.7630  16.9240 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 39.935861   0.717499   55.66   &lt;2e-16 ***
+horsepower  -0.157845   0.006446  -24.49   &lt;2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4.906 on 390 degrees of freedom
+Multiple R-squared:  0.6059,	Adjusted R-squared:  0.6049 
+F-statistic: 599.7 on 1 and 390 DF,  p-value: &lt; 2.2e-16
+</pre>
 </div>
+
 </div>
 
 </div>

@@ -10,6 +10,8 @@ summary(lm.fit)
 lm.fit_small = lm(Sales~Price+US,data=Carseats)
 summary(lm.fit_small)
 
+anova(lm.fit,lm.fit_small)
+
 confint(lm.fit_small, level=0.95)
 
 plot(predict(lm.fit_small),rstudent(lm.fit_small))
