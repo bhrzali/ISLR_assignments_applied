@@ -261,11 +261,19 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit1 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>zn<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit1<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>Boston2 <span class="o">=</span> Boston
+coef_simple <span class="o">=</span> <span class="kt">c</span><span class="p">()</span>
+Boston2<span class="o">$</span>chas <span class="o">=</span> <span class="kp">as.factor</span><span class="p">(</span>Boston<span class="o">$</span>chas<span class="p">)</span>
+<span class="kr">for</span> <span class="p">(</span>p <span class="kr">in</span> <span class="m">2</span><span class="o">:</span><span class="kp">length</span><span class="p">(</span>Boston2<span class="p">)){</span>
+    pred <span class="o">=</span> Boston<span class="p">[,</span>p<span class="p">]</span>
+    <span class="kp">print</span><span class="p">(</span><span class="kp">colnames</span><span class="p">(</span>Boston2<span class="p">)[</span>p<span class="p">])</span>
+    lm.fit <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>pred<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
+    coef_simple <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>coef_simple<span class="p">,</span> coef<span class="p">(</span>lm.fit<span class="p">)[</span><span class="m">-1</span><span class="p">])</span> <span class="c1"># for part (c)</span>
+    <span class="kp">print</span><span class="p">(</span><span class="kp">summary</span><span class="p">(</span>lm.fit<span class="p">))</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -277,12 +285,11 @@ div#notebook {
 
 
 <div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1] &quot;zn&quot;
 
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ zn, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
    Min     1Q Median     3Q    Max 
@@ -291,46 +298,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)  4.45369    0.41722  10.675  &lt; 2e-16 ***
-zn          -0.07393    0.01609  -4.594 5.51e-06 ***
+pred        -0.07393    0.01609  -4.594 5.51e-06 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 8.435 on 504 degrees of freedom
 Multiple R-squared:  0.04019,	Adjusted R-squared:  0.03828 
 F-statistic:  21.1 on 1 and 504 DF,  p-value: 5.506e-06
-</pre>
-</div>
 
-</div>
+[1] &quot;indus&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit2 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>indus<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit2<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ indus, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -339,47 +318,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) -2.06374    0.66723  -3.093  0.00209 ** 
-indus        0.50978    0.05102   9.991  &lt; 2e-16 ***
+pred         0.50978    0.05102   9.991  &lt; 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 7.866 on 504 degrees of freedom
 Multiple R-squared:  0.1653,	Adjusted R-squared:  0.1637 
 F-statistic: 99.82 on 1 and 504 DF,  p-value: &lt; 2.2e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;chas&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>chas2 <span class="o">=</span> <span class="kp">as.factor</span><span class="p">(</span>Boston<span class="o">$</span>chas<span class="p">)</span> <span class="c1">#making chas a qualitative variable</span>
-lm.fit3 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>chas2<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit3<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ chas2, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
    Min     1Q Median     3Q    Max 
@@ -388,46 +338,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)   3.7444     0.3961   9.453   &lt;2e-16 ***
-chas21       -1.8928     1.5061  -1.257    0.209    
+pred         -1.8928     1.5061  -1.257    0.209    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 8.597 on 504 degrees of freedom
 Multiple R-squared:  0.003124,	Adjusted R-squared:  0.001146 
 F-statistic: 1.579 on 1 and 504 DF,  p-value: 0.2094
-</pre>
-</div>
 
-</div>
+[1] &quot;nox&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit4 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>nox<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit4<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ nox, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -436,46 +358,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)  -13.720      1.699  -8.073 5.08e-15 ***
-nox           31.249      2.999  10.419  &lt; 2e-16 ***
+pred          31.249      2.999  10.419  &lt; 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 7.81 on 504 degrees of freedom
 Multiple R-squared:  0.1772,	Adjusted R-squared:  0.1756 
 F-statistic: 108.6 on 1 and 504 DF,  p-value: &lt; 2.2e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;rm&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit5 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span><span class="kp">rm</span><span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit5<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ rm, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
    Min     1Q Median     3Q    Max 
@@ -484,46 +378,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)   20.482      3.365   6.088 2.27e-09 ***
-rm            -2.684      0.532  -5.045 6.35e-07 ***
+pred          -2.684      0.532  -5.045 6.35e-07 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 8.401 on 504 degrees of freedom
 Multiple R-squared:  0.04807,	Adjusted R-squared:  0.04618 
 F-statistic: 25.45 on 1 and 504 DF,  p-value: 6.347e-07
-</pre>
-</div>
 
-</div>
+[1] &quot;age&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit6 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>age<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit6<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ age, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
    Min     1Q Median     3Q    Max 
@@ -532,46 +398,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) -3.77791    0.94398  -4.002 7.22e-05 ***
-age          0.10779    0.01274   8.463 2.85e-16 ***
+pred         0.10779    0.01274   8.463 2.85e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 8.057 on 504 degrees of freedom
 Multiple R-squared:  0.1244,	Adjusted R-squared:  0.1227 
 F-statistic: 71.62 on 1 and 504 DF,  p-value: 2.855e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;dis&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit7 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>dis<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit7<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ dis, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
    Min     1Q Median     3Q    Max 
@@ -580,46 +418,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept)   9.4993     0.7304  13.006   &lt;2e-16 ***
-dis          -1.5509     0.1683  -9.213   &lt;2e-16 ***
+pred         -1.5509     0.1683  -9.213   &lt;2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 7.965 on 504 degrees of freedom
 Multiple R-squared:  0.1441,	Adjusted R-squared:  0.1425 
 F-statistic: 84.89 on 1 and 504 DF,  p-value: &lt; 2.2e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;rad&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[51]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit8 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>rad<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit8<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ rad, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -628,46 +438,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) -2.28716    0.44348  -5.157 3.61e-07 ***
-rad          0.61791    0.03433  17.998  &lt; 2e-16 ***
+pred         0.61791    0.03433  17.998  &lt; 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 6.718 on 504 degrees of freedom
 Multiple R-squared:  0.3913,	Adjusted R-squared:   0.39 
 F-statistic: 323.9 on 1 and 504 DF,  p-value: &lt; 2.2e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;tax&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit9 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>tax<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit9<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ tax, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -676,46 +458,18 @@ Residuals:
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) -8.528369   0.815809  -10.45   &lt;2e-16 ***
-tax          0.029742   0.001847   16.10   &lt;2e-16 ***
+pred         0.029742   0.001847   16.10   &lt;2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 6.997 on 504 degrees of freedom
 Multiple R-squared:  0.3396,	Adjusted R-squared:  0.3383 
 F-statistic: 259.2 on 1 and 504 DF,  p-value: &lt; 2.2e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;ptratio&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[53]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit10 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>ptratio<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit10<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ ptratio, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
    Min     1Q Median     3Q    Max 
@@ -724,46 +478,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) -17.6469     3.1473  -5.607 3.40e-08 ***
-ptratio       1.1520     0.1694   6.801 2.94e-11 ***
+pred          1.1520     0.1694   6.801 2.94e-11 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 8.24 on 504 degrees of freedom
 Multiple R-squared:  0.08407,	Adjusted R-squared:  0.08225 
 F-statistic: 46.26 on 1 and 504 DF,  p-value: 2.943e-11
-</pre>
-</div>
 
-</div>
+[1] &quot;black&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit11 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>black<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit11<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ black, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -772,46 +498,18 @@ Residuals:
 Coefficients:
              Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) 16.553529   1.425903  11.609   &lt;2e-16 ***
-black       -0.036280   0.003873  -9.367   &lt;2e-16 ***
+pred        -0.036280   0.003873  -9.367   &lt;2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 7.946 on 504 degrees of freedom
 Multiple R-squared:  0.1483,	Adjusted R-squared:  0.1466 
 F-statistic: 87.74 on 1 and 504 DF,  p-value: &lt; 2.2e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;lstat&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[55]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit12 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>lstat<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit12<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ lstat, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
@@ -820,46 +518,18 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) -3.33054    0.69376  -4.801 2.09e-06 ***
-lstat        0.54880    0.04776  11.491  &lt; 2e-16 ***
+pred         0.54880    0.04776  11.491  &lt; 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 7.664 on 504 degrees of freedom
 Multiple R-squared:  0.2076,	Adjusted R-squared:  0.206 
 F-statistic:   132 on 1 and 504 DF,  p-value: &lt; 2.2e-16
-</pre>
-</div>
 
-</div>
+[1] &quot;medv&quot;
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[56]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit13 <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>medv<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit13<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_text output_subarea ">
-<pre>
 Call:
-lm(formula = crim ~ medv, data = Boston)
+lm(formula = crim ~ pred, data = Boston)
 
 Residuals:
    Min     1Q Median     3Q    Max 
@@ -868,16 +538,16 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
 (Intercept) 11.79654    0.93419   12.63   &lt;2e-16 ***
-medv        -0.36316    0.03839   -9.46   &lt;2e-16 ***
+pred        -0.36316    0.03839   -9.46   &lt;2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 7.934 on 504 degrees of freedom
 Multiple R-squared:  0.1508,	Adjusted R-squared:  0.1491 
 F-statistic: 89.49 on 1 and 504 DF,  p-value: &lt; 2.2e-16
+
 </pre>
 </div>
-
 </div>
 
 </div>
@@ -905,21 +575,7 @@ F-statistic: 89.49 on 1 and 504 DF,  p-value: &lt; 2.2e-16
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[57]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>Boston2 <span class="o">=</span> Boston
-Boston2<span class="p">[,</span><span class="m">4</span><span class="p">]</span><span class="o">=</span><span class="kp">as.factor</span><span class="p">(</span>chas<span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[58]:</div>
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="kp">summary</span><span class="p">(</span>Boston2<span class="p">)</span>
@@ -975,7 +631,7 @@ Boston2<span class="p">[,</span><span class="m">4</span><span class="p">]</span>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[59]:</div>
+<div class="prompt input_prompt">In&nbsp;[107]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>lm.fit_all <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span><span class="m">.</span><span class="p">,</span>data<span class="o">=</span>Boston2<span class="p">)</span>
@@ -1038,7 +694,7 @@ F-statistic: 31.47 on 13 and 492 DF,  p-value: &lt; 2.2e-16
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For all the predictors whose associated p-value is near zero the null hypothesis that Beta-j = 0 can be rejected. We can't reject the null hypothesis for Intercept, zn, age, rad, black, and medv.</p>
+<p>For all the predictors whose associated p-value is near zero the null hypothesis that Beta-j = 0 can be rejected. We can't reject the null hypothesis for Intercept, zn, dis, rad, black, and medv.</p>
 
 </div>
 </div>
@@ -1054,32 +710,7 @@ F-statistic: 31.47 on 13 and 492 DF,  p-value: &lt; 2.2e-16
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[60]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>coef_simple <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>coef<span class="p">(</span>lm.fit1<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit2<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit3<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit4<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit5<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit6<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit7<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit8<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit9<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit10<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit11<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit12<span class="p">)[</span><span class="m">-1</span><span class="p">],</span>
-                coef<span class="p">(</span>lm.fit13<span class="p">)[</span><span class="m">-1</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[108]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>coef_multi <span class="o">=</span> coef<span class="p">(</span>lm.fit_all<span class="p">)[</span><span class="m">-1</span><span class="p">]</span>
