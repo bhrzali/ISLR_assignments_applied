@@ -2272,8 +2272,8 @@ test_data <span class="o">=</span> test_data<span class="p">[,</span><span class
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="kn">library</span><span class="p">(</span>MASS<span class="p">)</span>
-lda.fit <span class="o">=</span> lda<span class="p">(</span>mpg01<span class="o">~</span>cylinders<span class="o">+</span>displacement<span class="o">+</span>horsepower<span class="o">+</span>weight<span class="o">+</span>origin<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
-lda.fit
+lda.model <span class="o">=</span> lda<span class="p">(</span>mpg01<span class="o">~</span>cylinders<span class="o">+</span>displacement<span class="o">+</span>horsepower<span class="o">+</span>weight<span class="o">+</span>origin<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
+lda.model
 </pre></div>
 
 </div>
@@ -2321,7 +2321,7 @@ origin        0.232472829</pre>
 <div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lda.pred <span class="o">=</span> predict<span class="p">(</span>lda.fit<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lda.pred <span class="o">=</span> predict<span class="p">(</span>lda.model<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
 <span class="c1">#test error percentage</span>
 <span class="kp">mean</span><span class="p">(</span>lda.pred<span class="o">$</span><span class="kp">class</span><span class="o">!=</span>test_data<span class="o">$</span>mpg01<span class="p">)</span><span class="o">*</span><span class="m">100</span>
 </pre></div>
@@ -2360,8 +2360,8 @@ origin        0.232472829</pre>
 <div class="prompt input_prompt">In&nbsp;[80]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>qda.fit <span class="o">=</span> qda<span class="p">(</span>mpg01<span class="o">~</span>cylinders<span class="o">+</span>displacement<span class="o">+</span>horsepower<span class="o">+</span>weight<span class="o">+</span>origin<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
-qda.fit
+<div class=" highlight hl-r"><pre><span></span>qda.model <span class="o">=</span> qda<span class="p">(</span>mpg01<span class="o">~</span>cylinders<span class="o">+</span>displacement<span class="o">+</span>horsepower<span class="o">+</span>weight<span class="o">+</span>origin<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
+qda.model
 </pre></div>
 
 </div>
@@ -2401,7 +2401,7 @@ Group means:
 <div class="prompt input_prompt">In&nbsp;[81]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>qda.pred <span class="o">=</span> predict<span class="p">(</span>qda.fit<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>qda.pred <span class="o">=</span> predict<span class="p">(</span>qda.model<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
 <span class="c1">#test error percentage</span>
 <span class="kp">mean</span><span class="p">(</span>qda.pred<span class="o">$</span><span class="kp">class</span><span class="o">!=</span>test_data<span class="o">$</span>mpg01<span class="p">)</span><span class="o">*</span><span class="m">100</span>
 </pre></div>
@@ -2440,8 +2440,8 @@ Group means:
 <div class="prompt input_prompt">In&nbsp;[82]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lgs.fit <span class="o">=</span> glm<span class="p">(</span>mpg01<span class="o">~</span>cylinders<span class="o">+</span>displacement<span class="o">+</span>horsepower<span class="o">+</span>weight<span class="o">+</span>origin<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">,</span>family<span class="o">=</span>binomial<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lgs.fit<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lgs.model <span class="o">=</span> glm<span class="p">(</span>mpg01<span class="o">~</span>cylinders<span class="o">+</span>displacement<span class="o">+</span>horsepower<span class="o">+</span>weight<span class="o">+</span>origin<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">,</span>family<span class="o">=</span>binomial<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lgs.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2497,7 +2497,7 @@ Number of Fisher Scoring iterations: 7
 <div class="prompt input_prompt">In&nbsp;[83]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lgs.probs <span class="o">=</span> predict<span class="p">(</span>lgs.fit<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">,</span>type<span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lgs.probs <span class="o">=</span> predict<span class="p">(</span>lgs.model<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">,</span>type<span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 lgs.pred <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="kp">nrow</span><span class="p">(</span>test_data<span class="p">))</span>
 lgs.pred<span class="p">[</span>lgs.probs<span class="o">&gt;</span><span class="m">0.5</span><span class="p">]</span><span class="o">=</span><span class="m">1</span>
 <span class="c1">#test error percentage</span>

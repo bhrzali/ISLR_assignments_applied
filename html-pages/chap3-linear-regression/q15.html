@@ -270,9 +270,9 @@ Boston2<span class="o">$</span>chas <span class="o">=</span> <span class="kp">as
 <span class="kr">for</span> <span class="p">(</span>p <span class="kr">in</span> <span class="m">2</span><span class="o">:</span><span class="kp">length</span><span class="p">(</span>Boston2<span class="p">)){</span>
     pred <span class="o">=</span> Boston<span class="p">[,</span>p<span class="p">]</span>
     <span class="kp">print</span><span class="p">(</span><span class="kp">colnames</span><span class="p">(</span>Boston2<span class="p">)[</span>p<span class="p">])</span>
-    lm.fit <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>pred<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
-    coef_simple <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>coef_simple<span class="p">,</span> coef<span class="p">(</span>lm.fit<span class="p">)[</span><span class="m">-1</span><span class="p">])</span> <span class="c1"># for part (c)</span>
-    <span class="kp">print</span><span class="p">(</span><span class="kp">summary</span><span class="p">(</span>lm.fit<span class="p">))</span>
+    lm.model <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>pred<span class="p">,</span>data<span class="o">=</span>Boston<span class="p">)</span>
+    coef_simple <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>coef_simple<span class="p">,</span> coef<span class="p">(</span>lm.model<span class="p">)[</span><span class="m">-1</span><span class="p">])</span> <span class="c1"># for part (c)</span>
+    <span class="kp">print</span><span class="p">(</span><span class="kp">summary</span><span class="p">(</span>lm.model<span class="p">))</span>
 <span class="p">}</span>
 </pre></div>
 
@@ -634,8 +634,8 @@ F-statistic: 89.49 on 1 and 504 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[107]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_all <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span><span class="m">.</span><span class="p">,</span>data<span class="o">=</span>Boston2<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_all<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_all <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span><span class="m">.</span><span class="p">,</span>data<span class="o">=</span>Boston2<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_all<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -713,7 +713,7 @@ F-statistic: 31.47 on 13 and 492 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[108]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>coef_multi <span class="o">=</span> coef<span class="p">(</span>lm.fit_all<span class="p">)[</span><span class="m">-1</span><span class="p">]</span>
+<div class=" highlight hl-r"><pre><span></span>coef_multi <span class="o">=</span> coef<span class="p">(</span>lm.model_all<span class="p">)[</span><span class="m">-1</span><span class="p">]</span>
 plot<span class="p">(</span>coef_simple<span class="p">,</span> coef_multi<span class="p">)</span>
 </pre></div>
 
@@ -924,15 +924,15 @@ gJAAAUICBAgJECAkQICQAAFCAgQICRAgJECAkACB/wdkXjZREduWIwAAAABJRU5ErkJggg=="
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[104]:</div>
+<div class="prompt input_prompt">In&nbsp;[111]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="kr">for</span> <span class="p">(</span>p <span class="kr">in</span> <span class="m">2</span><span class="o">:</span><span class="kp">length</span><span class="p">(</span>Boston<span class="p">)){</span>
-    pred <span class="o">=</span> Boston<span class="p">[,</span>p<span class="p">]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="kr">for</span> <span class="p">(</span>p <span class="kr">in</span> <span class="m">2</span><span class="o">:</span><span class="kp">length</span><span class="p">(</span>Boston2<span class="p">)){</span>
+    pred <span class="o">=</span> Boston2<span class="p">[,</span>p<span class="p">]</span>
     <span class="kr">if</span> <span class="p">(</span><span class="kp">colnames</span><span class="p">(</span>Boston<span class="p">)[</span>p<span class="p">]</span><span class="o">!=</span><span class="s">&quot;chas&quot;</span><span class="p">){</span>
         <span class="kp">print</span><span class="p">(</span><span class="kp">colnames</span><span class="p">(</span>Boston<span class="p">)[</span>p<span class="p">])</span>
-        lm.fit <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>poly<span class="p">(</span>pred<span class="p">,</span><span class="m">3</span><span class="p">),</span> data<span class="o">=</span>Boston<span class="p">)</span>
-        <span class="kp">print</span><span class="p">(</span><span class="kp">summary</span><span class="p">(</span>lm.fit<span class="p">))</span>
+        lm.model <span class="o">=</span> lm<span class="p">(</span>crim<span class="o">~</span>poly<span class="p">(</span>pred<span class="p">,</span><span class="m">3</span><span class="p">),</span> data<span class="o">=</span>Boston<span class="p">)</span>
+        <span class="kp">print</span><span class="p">(</span><span class="kp">summary</span><span class="p">(</span>lm.model<span class="p">))</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>

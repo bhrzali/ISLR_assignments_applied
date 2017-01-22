@@ -210,8 +210,8 @@ y<span class="o">=</span><span class="m">2</span><span class="o">*</span>x<span 
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x<span class="m">+0</span><span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x<span class="m">+0</span><span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -258,7 +258,7 @@ F-statistic: 350.7 on 1 and 99 DF,  p-value: &lt; 2.2e-16
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>plot<span class="p">(</span>x<span class="p">,</span>y<span class="p">)</span>
-abline<span class="p">(</span>lm.fit<span class="p">)</span>
+abline<span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -635,7 +635,7 @@ IAFQ8H8/jk3ATQxk7wAAAABJRU5ErkJggg=="
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>summary.lm<span class="p">(</span>lm.fit<span class="p">)</span><span class="o">$</span>coefficients
+<div class=" highlight hl-r"><pre><span></span>summary.lm<span class="p">(</span>lm.model<span class="p">)</span><span class="o">$</span>coefficients
 </pre></div>
 
 </div>
@@ -688,8 +688,8 @@ IAFQ8H8/jk3ATQxk7wAAAABJRU5ErkJggg=="
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_x_y <span class="o">=</span> lm<span class="p">(</span>x<span class="o">~</span>y<span class="m">+0</span><span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_x_y<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_x_y <span class="o">=</span> lm<span class="p">(</span>x<span class="o">~</span>y<span class="m">+0</span><span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_x_y<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -735,7 +735,7 @@ F-statistic: 350.7 on 1 and 99 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>summary.lm<span class="p">(</span>lm.fit_x_y<span class="p">)</span><span class="o">$</span>coefficients
+<div class=" highlight hl-r"><pre><span></span>summary.lm<span class="p">(</span>lm.model_x_y<span class="p">)</span><span class="o">$</span>coefficients
 </pre></div>
 
 </div>
@@ -905,8 +905,8 @@ t <span class="o">=</span> <span class="p">(</span><span class="kp">sqrt</span><
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit1 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit1<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model1 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model1<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -953,8 +953,8 @@ F-statistic: 344.3 on 1 and 98 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit2 <span class="o">=</span> lm<span class="p">(</span>x<span class="o">~</span>y<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit2<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model2 <span class="o">=</span> lm<span class="p">(</span>x<span class="o">~</span>y<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model2<span class="p">)</span>
 </pre></div>
 
 </div>

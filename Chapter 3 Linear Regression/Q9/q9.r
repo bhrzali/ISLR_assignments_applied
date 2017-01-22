@@ -7,27 +7,27 @@ pairs(Auto)
 auto_subset = subset(Auto, select=-name)
 cor(auto_subset)
 
-lm.fit = lm(mpg~.-name, data=Auto)
-summary(lm.fit)
+lm.model = lm(mpg~.-name, data=Auto)
+summary(lm.model)
 
 par(mfrow=c(2,2))
-plot(lm.fit)
+plot(lm.model)
 
-lm.fit_interaction = lm(mpg~.+cylinders*displacement+cylinders:year-name,data=Auto)
-summary(lm.fit_interaction)
+lm.model_interaction = lm(mpg~.+cylinders*displacement+cylinders:year-name,data=Auto)
+summary(lm.model_interaction)
 
-lm.fit_logY_transform = lm(log(mpg)~.+cylinders*displacement-name,data=Auto)
-summary(lm.fit_logY_transform)
+lm.model_logY_transform = lm(log(mpg)~.+cylinders*displacement-name,data=Auto)
+summary(lm.model_logY_transform)
 
 par(mfrow=c(2,2))
-plot(lm.fit_logY_transform)
+plot(lm.model_logY_transform)
 
-lm.fit_sqrtY_transform = lm(sqrt(mpg)~.+cylinders*displacement-name,data=Auto)
-summary(lm.fit_logY_transform)
+lm.model_sqrtY_transform = lm(sqrt(mpg)~.+cylinders*displacement-name,data=Auto)
+summary(lm.model_logY_transform)
 par(mfrow=c(2,2))
-plot(lm.fit_sqrtY_transform)
+plot(lm.model_sqrtY_transform)
 
-lm.fit_Xsq = lm(mpg~horsepower+I(horsepower^2),data=Auto)
-summary(lm.fit_Xsq)
+lm.model_Xsq = lm(mpg~horsepower+I(horsepower^2),data=Auto)
+summary(lm.model_Xsq)
 
 

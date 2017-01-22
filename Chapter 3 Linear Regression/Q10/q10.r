@@ -4,20 +4,20 @@ library(ISLR)
 Carseats = na.omit(Carseats)
 summary(Carseats)
 
-lm.fit = lm(Sales~Price+Urban+US,data=Carseats)
-summary(lm.fit)
+lm.model = lm(Sales~Price+Urban+US,data=Carseats)
+summary(lm.model)
 
-lm.fit_small = lm(Sales~Price+US,data=Carseats)
-summary(lm.fit_small)
+lm.model_small = lm(Sales~Price+US,data=Carseats)
+summary(lm.model_small)
 
-anova(lm.fit,lm.fit_small)
+anova(lm.model,lm.model_small)
 
-confint(lm.fit_small, level=0.95)
+confint(lm.model_small, level=0.95)
 
-plot(predict(lm.fit_small),rstudent(lm.fit_small))
+plot(predict(lm.model_small),rstudent(lm.model_small))
 
 par(mfrow=c(2,2))
-plot(lm.fit_small)
+plot(lm.model_small)
 
 p=2
 n=nrow(Carseats)

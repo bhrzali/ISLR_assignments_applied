@@ -22,24 +22,24 @@ training_data = training_data[,-9]
 test_data = test_data[,-9]
 
 library(MASS)
-lda.fit = lda(mpg01~cylinders+displacement+horsepower+weight+origin,data=training_data)
-lda.fit
+lda.model = lda(mpg01~cylinders+displacement+horsepower+weight+origin,data=training_data)
+lda.model
 
-lda.pred = predict(lda.fit,newdata=test_data)
+lda.pred = predict(lda.model,newdata=test_data)
 #test error percentage
 mean(lda.pred$class!=test_data$mpg01)*100
 
-qda.fit = qda(mpg01~cylinders+displacement+horsepower+weight+origin,data=training_data)
-qda.fit
+qda.model = qda(mpg01~cylinders+displacement+horsepower+weight+origin,data=training_data)
+qda.model
 
-qda.pred = predict(qda.fit,newdata=test_data)
+qda.pred = predict(qda.model,newdata=test_data)
 #test error percentage
 mean(qda.pred$class!=test_data$mpg01)*100
 
-lgs.fit = glm(mpg01~cylinders+displacement+horsepower+weight+origin,data=training_data,family=binomial)
-summary(lgs.fit)
+lgs.model = glm(mpg01~cylinders+displacement+horsepower+weight+origin,data=training_data,family=binomial)
+summary(lgs.model)
 
-lgs.probs = predict(lgs.fit,newdata=test_data,type="response")
+lgs.probs = predict(lgs.model,newdata=test_data,type="response")
 lgs.pred = rep(0,nrow(test_data))
 lgs.pred[lgs.probs>0.5]=1
 #test error percentage

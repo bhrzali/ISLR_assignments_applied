@@ -2129,8 +2129,8 @@ rkJggg=="
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>glm.fit <span class="o">=</span> glm<span class="p">(</span>Direction<span class="o">~</span>Lag1<span class="o">+</span>Lag2<span class="o">+</span>Lag3<span class="o">+</span>Lag4<span class="o">+</span>Lag5<span class="o">+</span>Volume<span class="p">,</span>data<span class="o">=</span>Weekly<span class="p">,</span> family<span class="o">=</span>binomial<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>glm.fit<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>glm.model <span class="o">=</span> glm<span class="p">(</span>Direction<span class="o">~</span>Lag1<span class="o">+</span>Lag2<span class="o">+</span>Lag3<span class="o">+</span>Lag4<span class="o">+</span>Lag5<span class="o">+</span>Volume<span class="p">,</span>data<span class="o">=</span>Weekly<span class="p">,</span> family<span class="o">=</span>binomial<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>glm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2206,7 +2206,7 @@ Number of Fisher Scoring iterations: 4
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>glm.probs <span class="o">=</span> predict<span class="p">(</span>glm.fit<span class="p">,</span>newdata<span class="o">=</span>Weekly<span class="p">,</span>type<span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>glm.probs <span class="o">=</span> predict<span class="p">(</span>glm.model<span class="p">,</span>newdata<span class="o">=</span>Weekly<span class="p">,</span>type<span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 glm.pred <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="s">&quot;Down&quot;</span><span class="p">,</span><span class="kp">length</span><span class="p">(</span>Weekly<span class="o">$</span>Direction<span class="p">))</span>
 glm.pred<span class="p">[</span>glm.probs<span class="o">&gt;</span><span class="m">0.5</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span>
 <span class="kp">table</span><span class="p">(</span>glm.pred<span class="p">,</span>Weekly<span class="o">$</span>Direction<span class="p">)</span>
@@ -2370,8 +2370,8 @@ glm.pred Down  Up
 <div class=" highlight hl-r"><pre><span></span>training <span class="o">=</span> <span class="p">(</span>Weekly<span class="o">$</span>Year<span class="o">&lt;</span><span class="m">2009</span><span class="p">)</span>
 training_data <span class="o">=</span> Weekly<span class="p">[</span>training<span class="p">,]</span>
 test_data <span class="o">=</span> Weekly<span class="p">[</span><span class="o">!</span>training<span class="p">,]</span>
-glm.fit2 <span class="o">=</span> glm<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">,</span>family<span class="o">=</span>binomial<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>glm.fit2<span class="p">)</span>
+glm.model2 <span class="o">=</span> glm<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">,</span>family<span class="o">=</span>binomial<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>glm.model2<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2422,7 +2422,7 @@ Number of Fisher Scoring iterations: 4
 <div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>glm.probs2 <span class="o">=</span> predict<span class="p">(</span>glm.fit2<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">,</span>type<span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>glm.probs2 <span class="o">=</span> predict<span class="p">(</span>glm.model2<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">,</span>type<span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 glm.pred2 <span class="o">=</span> <span class="kp">rep</span><span class="p">(</span><span class="s">&quot;Down&quot;</span><span class="p">,</span><span class="kp">length</span><span class="p">(</span>test_data<span class="o">$</span>Direction<span class="p">))</span>
 glm.pred2<span class="p">[</span>glm.probs2<span class="o">&gt;</span><span class="m">0.5</span><span class="p">]</span><span class="o">=</span><span class="s">&quot;Up&quot;</span>
 <span class="kp">table</span><span class="p">(</span>glm.pred2<span class="p">,</span>test_data<span class="o">$</span>Direction<span class="p">)</span>
@@ -2575,8 +2575,8 @@ glm.pred2 Down Up
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#LDA</span>
 <span class="kn">library</span><span class="p">(</span>MASS<span class="p">)</span>
-lda.fit <span class="o">=</span> lda<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
-lda.fit
+lda.model <span class="o">=</span> lda<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
+lda.model
 </pre></div>
 
 </div>
@@ -2619,7 +2619,7 @@ Lag2 0.4414162</pre>
 <div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lda.pred <span class="o">=</span> predict<span class="p">(</span>lda.fit<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lda.pred <span class="o">=</span> predict<span class="p">(</span>lda.model<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
 <span class="kp">table</span><span class="p">(</span>lda.pred<span class="o">$</span><span class="kp">class</span><span class="p">,</span>test_data<span class="o">$</span>Direction<span class="p">)</span>
 </pre></div>
 
@@ -2769,8 +2769,8 @@ Lag2 0.4414162</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#QDA</span>
-qda.fit <span class="o">=</span> qda<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
-qda.fit
+qda.model <span class="o">=</span> qda<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="p">,</span>data<span class="o">=</span>training_data<span class="p">)</span>
+qda.model
 </pre></div>
 
 </div>
@@ -2809,7 +2809,7 @@ Up    0.26036581</pre>
 <div class="prompt input_prompt">In&nbsp;[56]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>qda.pred <span class="o">=</span> predict<span class="p">(</span>qda.fit<span class="p">,</span> newdata<span class="o">=</span>test_data<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>qda.pred <span class="o">=</span> predict<span class="p">(</span>qda.model<span class="p">,</span> newdata<span class="o">=</span>test_data<span class="p">)</span>
 <span class="kp">table</span><span class="p">(</span>qda.pred<span class="o">$</span><span class="kp">class</span><span class="p">,</span>test_data<span class="o">$</span>Direction<span class="p">)</span>
 </pre></div>
 
@@ -3093,8 +3093,8 @@ knn.pred Down Up
 <div class="prompt input_prompt">In&nbsp;[104]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lda.fit2 <span class="o">=</span> lda<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="o">+</span><span class="kp">I</span><span class="p">(</span>Lag2<span class="o">^</span><span class="m">2</span><span class="p">),</span>data<span class="o">=</span>training_data<span class="p">)</span>
-lda.fit2
+<div class=" highlight hl-r"><pre><span></span>lda.model2 <span class="o">=</span> lda<span class="p">(</span>Direction<span class="o">~</span>Lag2<span class="o">+</span><span class="kp">I</span><span class="p">(</span>Lag2<span class="o">^</span><span class="m">2</span><span class="p">),</span>data<span class="o">=</span>training_data<span class="p">)</span>
+lda.model2
 </pre></div>
 
 </div>
@@ -3138,7 +3138,7 @@ I(Lag2^2) 0.02957998</pre>
 <div class="prompt input_prompt">In&nbsp;[109]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lda.pred2 <span class="o">=</span> predict<span class="p">(</span>lda.fit2<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lda.pred2 <span class="o">=</span> predict<span class="p">(</span>lda.model2<span class="p">,</span>newdata<span class="o">=</span>test_data<span class="p">)</span>
 <span class="kp">mean</span><span class="p">(</span>lda.pred2<span class="o">$</span>class<span class="o">==</span>test_data<span class="o">$</span>Direction<span class="p">)</span><span class="o">*</span><span class="m">100</span>
 </pre></div>
 

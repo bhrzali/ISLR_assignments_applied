@@ -616,8 +616,8 @@ rkJggg=="
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit1 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="o">+</span>x2<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit1<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model1 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="o">+</span>x2<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model1<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -688,8 +688,8 @@ F-statistic:  12.8 on 2 and 97 DF,  p-value: 1.164e-05
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit2 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit2<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model2 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model2<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -747,8 +747,8 @@ F-statistic: 24.86 on 1 and 98 DF,  p-value: 2.661e-06
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit3 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x2<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit3<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model3 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x2<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model3<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -849,10 +849,10 @@ y <span class="o">=</span> <span class="kt">c</span><span class="p">(</span>y<sp
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_g <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="o">+</span>x2<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_g<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_g <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="o">+</span>x2<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_g<span class="p">)</span>
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit_g<span class="p">)</span>
+plot<span class="p">(</span>lm.model_g<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -3608,12 +3608,12 @@ There is no outlier as Studentized residuals vs Fitted values graph is bounded b
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_g2 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_g2<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_g2 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x1<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_g2<span class="p">)</span>
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit_g2<span class="p">)</span>
+plot<span class="p">(</span>lm.model_g2<span class="p">)</span>
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
-plot<span class="p">(</span>predict<span class="p">(</span>lm.fit_g2<span class="p">),</span>rstudent<span class="p">(</span>lm.fit_g2<span class="p">))</span>
+plot<span class="p">(</span>predict<span class="p">(</span>lm.model_g2<span class="p">),</span>rstudent<span class="p">(</span>lm.model_g2<span class="p">))</span>
 </pre></div>
 
 </div>
@@ -6265,12 +6265,12 @@ SAAEECQAAggSAAEECYDA/wFbAkB1WJck4gAAAABJRU5ErkJggg=="
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_g3 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x2<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_g3<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_g3 <span class="o">=</span> lm<span class="p">(</span>y<span class="o">~</span>x2<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_g3<span class="p">)</span>
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit_g3<span class="p">)</span>
+plot<span class="p">(</span>lm.model_g3<span class="p">)</span>
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">))</span>
-plot<span class="p">(</span>predict<span class="p">(</span>lm.fit_g3<span class="p">),</span>rstudent<span class="p">(</span>lm.fit_g3<span class="p">))</span>
+plot<span class="p">(</span>predict<span class="p">(</span>lm.model_g3<span class="p">),</span>rstudent<span class="p">(</span>lm.model_g3<span class="p">))</span>
 </pre></div>
 
 </div>

@@ -5,10 +5,10 @@ summary(Weekly)
 
 pairs(Weekly)
 
-glm.fit = glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Weekly, family=binomial)
-summary(glm.fit)
+glm.model = glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Weekly, family=binomial)
+summary(glm.model)
 
-glm.probs = predict(glm.fit,newdata=Weekly,type="response")
+glm.probs = predict(glm.model,newdata=Weekly,type="response")
 glm.pred = rep("Down",length(Weekly$Direction))
 glm.pred[glm.probs>0.5]="Up"
 table(glm.pred,Weekly$Direction)
@@ -25,10 +25,10 @@ mean(glm.pred==Weekly$Direction)*100
 training = (Weekly$Year<2009)
 training_data = Weekly[training,]
 test_data = Weekly[!training,]
-glm.fit2 = glm(Direction~Lag2,data=training_data,family=binomial)
-summary(glm.fit2)
+glm.model2 = glm(Direction~Lag2,data=training_data,family=binomial)
+summary(glm.model2)
 
-glm.probs2 = predict(glm.fit2,newdata=test_data,type="response")
+glm.probs2 = predict(glm.model2,newdata=test_data,type="response")
 glm.pred2 = rep("Down",length(test_data$Direction))
 glm.pred2[glm.probs2>0.5]="Up"
 table(glm.pred2,test_data$Direction)
@@ -44,10 +44,10 @@ mean(glm.pred2==test_data$Direction)*100
 
 #LDA
 library(MASS)
-lda.fit = lda(Direction~Lag2,data=training_data)
-lda.fit
+lda.model = lda(Direction~Lag2,data=training_data)
+lda.model
 
-lda.pred = predict(lda.fit,newdata=test_data)
+lda.pred = predict(lda.model,newdata=test_data)
 table(lda.pred$class,test_data$Direction)
 
 #Overall prediction accuracy
@@ -60,10 +60,10 @@ mean(lda.pred$class==test_data$Direction)*100
 9/(9+5)*100
 
 #QDA
-qda.fit = qda(Direction~Lag2,data=training_data)
-qda.fit
+qda.model = qda(Direction~Lag2,data=training_data)
+qda.model
 
-qda.pred = predict(qda.fit, newdata=test_data)
+qda.pred = predict(qda.model, newdata=test_data)
 table(qda.pred$class,test_data$Direction)
 
 #Overall prediction accuracy
@@ -90,10 +90,10 @@ mean(knn.pred==knn_test_y)*100
 #Down prediction accuracy
 21/(21+30)*100
 
-lda.fit2 = lda(Direction~Lag2+I(Lag2^2),data=training_data)
-lda.fit2
+lda.model2 = lda(Direction~Lag2+I(Lag2^2),data=training_data)
+lda.model2
 
-lda.pred2 = predict(lda.fit2,newdata=test_data)
+lda.pred2 = predict(lda.model2,newdata=test_data)
 mean(lda.pred2$class==test_data$Direction)*100
 
 knn_train = scale(training_data[,-ncol(training_data)])

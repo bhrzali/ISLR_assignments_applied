@@ -258,8 +258,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit <span class="o">=</span> lm<span class="p">(</span>Sales<span class="o">~</span>Price<span class="o">+</span>Urban<span class="o">+</span>US<span class="p">,</span>data<span class="o">=</span>Carseats<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model <span class="o">=</span> lm<span class="p">(</span>Sales<span class="o">~</span>Price<span class="o">+</span>Urban<span class="o">+</span>US<span class="p">,</span>data<span class="o">=</span>Carseats<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -379,8 +379,8 @@ However the p-value of that of USYes variable is a lot smaller than the 5% criti
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_small <span class="o">=</span> lm<span class="p">(</span>Sales<span class="o">~</span>Price<span class="o">+</span>US<span class="p">,</span>data<span class="o">=</span>Carseats<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_small<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_small <span class="o">=</span> lm<span class="p">(</span>Sales<span class="o">~</span>Price<span class="o">+</span>US<span class="p">,</span>data<span class="o">=</span>Carseats<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_small<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -437,7 +437,7 @@ F-statistic: 62.43 on 2 and 397 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>anova<span class="p">(</span>lm.fit<span class="p">,</span>lm.fit_small<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>anova<span class="p">(</span>lm.model<span class="p">,</span>lm.model_small<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -491,7 +491,7 @@ F-statistic: 62.43 on 2 and 397 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>confint<span class="p">(</span>lm.fit_small<span class="p">,</span> level<span class="o">=</span><span class="m">0.95</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>confint<span class="p">(</span>lm.model_small<span class="p">,</span> level<span class="o">=</span><span class="m">0.95</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -536,7 +536,7 @@ F-statistic: 62.43 on 2 and 397 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>plot<span class="p">(</span>predict<span class="p">(</span>lm.fit_small<span class="p">),</span>rstudent<span class="p">(</span>lm.fit_small<span class="p">))</span>
+<div class=" highlight hl-r"><pre><span></span>plot<span class="p">(</span>predict<span class="p">(</span>lm.model_small<span class="p">),</span>rstudent<span class="p">(</span>lm.model_small<span class="p">))</span>
 </pre></div>
 
 </div>
@@ -1435,7 +1435,7 @@ hgWwkDAYFsBCwmBY4P+k+Kr/xI6bNQAAAABJRU5ErkJggg=="
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit_small<span class="p">)</span>
+plot<span class="p">(</span>lm.model_small<span class="p">)</span>
 </pre></div>
 
 </div>

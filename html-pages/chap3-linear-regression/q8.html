@@ -209,8 +209,8 @@ Auto<span class="o">=</span>na.omit<span class="p">(</span>Auto<span class="p">)
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span>horsepower<span class="p">,</span> data<span class="o">=</span>Auto<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span>horsepower<span class="p">,</span> data<span class="o">=</span>Auto<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -351,7 +351,7 @@ F-statistic: 599.7 on 1 and 390 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>predict<span class="p">(</span>lm.fit<span class="p">,</span><span class="kt">data.frame</span><span class="p">(</span>horsepower<span class="o">=</span><span class="m">98</span><span class="p">))</span>
+<div class=" highlight hl-r"><pre><span></span>predict<span class="p">(</span>lm.model<span class="p">,</span><span class="kt">data.frame</span><span class="p">(</span>horsepower<span class="o">=</span><span class="m">98</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -380,7 +380,7 @@ F-statistic: 599.7 on 1 and 390 DF,  p-value: &lt; 2.2e-16
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#95% confidence interval</span>
-predict<span class="p">(</span>lm.fit<span class="p">,</span><span class="kt">data.frame</span><span class="p">(</span>horsepower<span class="o">=</span><span class="m">98</span><span class="p">),</span>interval<span class="o">=</span><span class="s">&quot;confidence&quot;</span><span class="p">)</span>
+predict<span class="p">(</span>lm.model<span class="p">,</span><span class="kt">data.frame</span><span class="p">(</span>horsepower<span class="o">=</span><span class="m">98</span><span class="p">),</span>interval<span class="o">=</span><span class="s">&quot;confidence&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -415,7 +415,7 @@ predict<span class="p">(</span>lm.fit<span class="p">,</span><span class="kt">da
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#95% prediction interval</span>
-predict<span class="p">(</span>lm.fit<span class="p">,</span><span class="kt">data.frame</span><span class="p">(</span>horsepower<span class="o">=</span><span class="m">98</span><span class="p">),</span>interval<span class="o">=</span><span class="s">&quot;prediction&quot;</span><span class="p">)</span>
+predict<span class="p">(</span>lm.model<span class="p">,</span><span class="kt">data.frame</span><span class="p">(</span>horsepower<span class="o">=</span><span class="m">98</span><span class="p">),</span>interval<span class="o">=</span><span class="s">&quot;prediction&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -459,7 +459,7 @@ predict<span class="p">(</span>lm.fit<span class="p">,</span><span class="kt">da
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>plot<span class="p">(</span>Auto<span class="o">$</span>horsepower<span class="p">,</span> Auto<span class="o">$</span>mpg<span class="p">)</span>
-abline<span class="p">(</span>lm.fit<span class="p">)</span>
+abline<span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -1227,7 +1227,7 @@ lYd0siv3YwAAAABJRU5ErkJggg=="
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit<span class="p">)</span>
+plot<span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>

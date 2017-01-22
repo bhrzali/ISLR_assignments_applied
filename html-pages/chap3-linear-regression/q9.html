@@ -2614,8 +2614,8 @@ cor<span class="p">(</span>auto_subset<span class="p">)</span>
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span><span class="m">.</span><span class="o">-</span>name<span class="p">,</span> data<span class="o">=</span>Auto<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span><span class="m">.</span><span class="o">-</span>name<span class="p">,</span> data<span class="o">=</span>Auto<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2735,7 +2735,7 @@ F-statistic: 252.4 on 7 and 384 DF,  p-value: &lt; 2.2e-16
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit<span class="p">)</span>
+plot<span class="p">(</span>lm.model<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -5778,8 +5778,8 @@ AACRQGIHAAAAIBJI7AAAAABE4v9T+qVkYhlISAAAAABJRU5ErkJggg=="
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_interaction <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span><span class="m">.</span><span class="o">+</span>cylinders<span class="o">*</span>displacement<span class="o">+</span>cylinders<span class="o">:</span>year<span class="o">-</span>name<span class="p">,</span>data<span class="o">=</span>Auto<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_interaction<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_interaction <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span><span class="m">.</span><span class="o">+</span>cylinders<span class="o">*</span>displacement<span class="o">+</span>cylinders<span class="o">:</span>year<span class="o">-</span>name<span class="p">,</span>data<span class="o">=</span>Auto<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_interaction<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -5854,8 +5854,8 @@ F-statistic: 256.8 on 9 and 382 DF,  p-value: &lt; 2.2e-16
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_logY_transform <span class="o">=</span> lm<span class="p">(</span><span class="kp">log</span><span class="p">(</span>mpg<span class="p">)</span><span class="o">~</span><span class="m">.</span><span class="o">+</span>cylinders<span class="o">*</span>displacement<span class="o">-</span>name<span class="p">,</span>data<span class="o">=</span>Auto<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_logY_transform<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_logY_transform <span class="o">=</span> lm<span class="p">(</span><span class="kp">log</span><span class="p">(</span>mpg<span class="p">)</span><span class="o">~</span><span class="m">.</span><span class="o">+</span>cylinders<span class="o">*</span>displacement<span class="o">-</span>name<span class="p">,</span>data<span class="o">=</span>Auto<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_logY_transform<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -5911,7 +5911,7 @@ F-statistic: 379.6 on 8 and 383 DF,  p-value: &lt; 2.2e-16
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit_logY_transform<span class="p">)</span>
+plot<span class="p">(</span>lm.model_logY_transform<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -9044,10 +9044,10 @@ AEri/wG4C4VsdUt9XgAAAABJRU5ErkJggg=="
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_sqrtY_transform <span class="o">=</span> lm<span class="p">(</span><span class="kp">sqrt</span><span class="p">(</span>mpg<span class="p">)</span><span class="o">~</span><span class="m">.</span><span class="o">+</span>cylinders<span class="o">*</span>displacement<span class="o">-</span>name<span class="p">,</span>data<span class="o">=</span>Auto<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_logY_transform<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_sqrtY_transform <span class="o">=</span> lm<span class="p">(</span><span class="kp">sqrt</span><span class="p">(</span>mpg<span class="p">)</span><span class="o">~</span><span class="m">.</span><span class="o">+</span>cylinders<span class="o">*</span>displacement<span class="o">-</span>name<span class="p">,</span>data<span class="o">=</span>Auto<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_logY_transform<span class="p">)</span>
 par<span class="p">(</span>mfrow<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
-plot<span class="p">(</span>lm.fit_sqrtY_transform<span class="p">)</span>
+plot<span class="p">(</span>lm.model_sqrtY_transform<span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12190,8 +12190,8 @@ QE0gsQMAAABQE0jsAAAAANTE/wM/yiBlccn19QAAAABJRU5ErkJggg=="
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>lm.fit_Xsq <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span>horsepower<span class="o">+</span><span class="kp">I</span><span class="p">(</span>horsepower<span class="o">^</span><span class="m">2</span><span class="p">),</span>data<span class="o">=</span>Auto<span class="p">)</span>
-<span class="kp">summary</span><span class="p">(</span>lm.fit_Xsq<span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span>lm.model_Xsq <span class="o">=</span> lm<span class="p">(</span>mpg<span class="o">~</span>horsepower<span class="o">+</span><span class="kp">I</span><span class="p">(</span>horsepower<span class="o">^</span><span class="m">2</span><span class="p">),</span>data<span class="o">=</span>Auto<span class="p">)</span>
+<span class="kp">summary</span><span class="p">(</span>lm.model_Xsq<span class="p">)</span>
 </pre></div>
 
 </div>
