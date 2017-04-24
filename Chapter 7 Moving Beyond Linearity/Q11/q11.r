@@ -54,3 +54,5 @@ abline(lm.model$coef[1],0,col="red",lty=2)
 abline(lm.model$coef[2],0,col="blue",lty=2)
 abline(lm.model$coef[3],0,col="green",lty=2)
 legend(0,10,legend=c("b0_hat","b1_hat","b2_hat"),col=c("red","blue","green"),lty=1, cex=0.8)
+
+
