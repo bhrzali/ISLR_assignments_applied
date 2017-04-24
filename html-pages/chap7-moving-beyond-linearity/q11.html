@@ -1076,142 +1076,15 @@ BUCU+56MHKKdAAAAAElFTkSuQmCC"
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[64]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>b1_hat <span class="o">=</span> <span class="m">6</span>
-b0_hat_lst <span class="o">=</span> <span class="kt">c</span><span class="p">()</span>
-b1_hat_lst <span class="o">=</span> <span class="kt">c</span><span class="p">()</span>
-b2_hat_lst <span class="o">=</span> <span class="kt">c</span><span class="p">()</span>
-
-<span class="kr">for</span><span class="p">(</span>i <span class="kr">in</span> <span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">){</span>
-    m1 <span class="o">=</span> y<span class="o">-</span>b1_hat<span class="o">*</span>x1
-    model <span class="o">=</span> lm<span class="p">(</span>m1<span class="o">~</span>x2<span class="p">)</span>
-    b2_hat <span class="o">=</span> model<span class="o">$</span>coef<span class="p">[</span><span class="m">2</span><span class="p">]</span>
-    
-    m2 <span class="o">=</span> y<span class="o">-</span>b2_hat<span class="o">*</span>x2
-    model <span class="o">=</span> lm<span class="p">(</span>m2<span class="o">~</span>x1<span class="p">)</span>
-    b1_hat <span class="o">=</span> model<span class="o">$</span>coef<span class="p">[</span><span class="m">2</span><span class="p">]</span>
-    
-    b0_hat_lst<span class="p">[</span>i<span class="p">]</span><span class="o">=</span>model<span class="o">$</span>coef<span class="p">[</span><span class="m">1</span><span class="p">]</span>
-    b1_hat_lst<span class="p">[</span>i<span class="p">]</span><span class="o">=</span>b1_hat
-    b2_hat_lst<span class="p">[</span>i<span class="p">]</span><span class="o">=</span>b2_hat
-<span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[68]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>b0_hat_lst<span class="p">[</span><span class="m">2</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-3.0253534272075
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[69]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>b1_hat_lst<span class="p">[</span><span class="m">2</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-5.02111016620589
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[70]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>b2_hat_lst<span class="p">[</span><span class="m">2</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-<div class="output_html rendered_html output_subarea ">
-7.9465331857042
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Two Iterations were enough to get a good approximation of the coefficients</p>
+<p>One iteration is enough to get a good approximation of the coefficients</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
